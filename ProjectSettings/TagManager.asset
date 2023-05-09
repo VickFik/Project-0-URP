@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dash Reset
   - Obstacle
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

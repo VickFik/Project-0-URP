@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Component")]
     [SerializeField] private TrailRenderer dashEffect;
+    public Transform spawnPos;
     private Rigidbody2D rb;
 
     [Header("Move")]
@@ -30,6 +31,16 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //Set position to respawn position
+        if (!PlayerPrefs.HasKey("Position_X") || !PlayerPrefs.HasKey("Position_Y"))
+        {
+            transform.position = spawnPos.position;
+        }
+        else
+        {
+            transform.position = new Vector2(PlayerPrefs.GetFloat("Position_X"), PlayerPrefs.GetFloat("Position_Y"));
+        }
+
         rb = GetComponent<Rigidbody2D>();
         gravityScale = rb.gravityScale;
     }
